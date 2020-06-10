@@ -11,7 +11,7 @@ class App extends Component {
         };
     }
     async componentDidMount() {
-        const res = await axios.get("http://localhost:8100/forms");
+        const res = await axios.get("/forms");
 
         this.setState({ forms: res.data });
 
