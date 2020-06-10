@@ -39,8 +39,7 @@ class FormController extends Controller
     }
 
     public function getForm($formID) {
-        // $formData = curl --location --request GET 'https://app.formassembly.com/api_v1/forms/view/4824363.json?access_token=JQWd9BYTBGVjNW8xXCs3gR4sJVI0Z5L0' \
-        //     --header 'Cookie: CAKEPHP=a8cfbe7d0db893c461f714a9d8987a50';
+
         $FULL_API_REQUEST = 'https://app.formassembly.com/api_v1/forms/view/'.$formID.'.html'.$this->token;
 
         $ch = curl_init();
@@ -81,6 +80,6 @@ class FormController extends Controller
         Mail::to($emailAddress)->send(
             new PdfResponse($response)
         );
-        return back()->withInput();
+        return back()->with('success','Email sent successfully!');
     }
 }
